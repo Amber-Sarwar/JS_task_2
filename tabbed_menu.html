@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tabbed Navigation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+    }
+    .header{
+        background-color: #002c5a;
+        border-radius: 10px;
+        padding: 30px 0;
+        text-align: center;
+        color: white;
+    }
+    .tab-container {
+      display: flex;
+      border-bottom: 2px solid #ccc;
+      margin: 10px 0 20px;
+    }
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      background: #eee;
+      border: 1px solid #ccc;
+      border-bottom: none;
+      margin-right: 5px;
+    }
+    .tab.active {
+      background: #fff;
+      border: 2px solid #002c5a;
+      border-bottom: none;
+      font-weight: bold;
+      color: #002c5a;
+    }
+    .tab-content {
+      display: none;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    #home{
+        text-align: center;
+    }
+    #home h2{
+        color: #0084ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="header"><h1>Art Website</h1></div>
+  <div class="tab-container">
+    <div class="tab active" data-tab="home">Home</div>
+    <div  class="tab" data-tab="products">Products</div>
+    <div class="tab" data-tab="services">Services</div>
+    <div class="tab" data-tab="contact">Contact</div>
+  </div>
+
+  <div id="home" class="tab-content active">
+    <h2>WELLCOME <br>
+      <P>You visit a right place. You can get the art that match your style</P>
+  </div>
+  <div id="services" class="tab-content">
+    <h2>Services</h2>
+    <p>We provide awesome services.</p>
+  </div>
+  <div id="products" class="tab-content">
+    <h2>Products</h2>
+    <p>We provide awesome products.</p>
+  </div>
+  <div id="contact" class="tab-content">
+    <h2>Contact</h2>
+    <p>Contact us at artglobe@gmail.com</p>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        contents.forEach(c => c.classList.remove("active"));
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.tab).classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>
